@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OIDC Example</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Welcome to OIDC Example</h1>
+    <div id="auth-buttons">
+      <a href="/login" class="button login">Login</a>
+      <a href="/logout" class="button logout" style="display: none;">Logout</a>
+    </div>
+    <div id="user-info" style="display: none;">
+      <h2>User Information</h2>
+      <pre id="user-data"></pre>
+    </div>
+  </div>
+  <script>
+    // Check if user is authenticated
+    async function checkAuth() {
+      const response = await fetch('/profile');
+
+      if (response.ok) {
+        const json = await response.json();
+
+        if (json.authenticated) {
+          document.querySelector('.login').style.display = 'none';
+          document.querySelector('.logout').style.display = 'inline-block';
+          document.getElementById('user-info').style.display = 'block';
+          document.getElementById('user-data').textContent = JSON.stringify(json.user, null, 2);
+        } else {
+          document.querySelector('.login').style.display = 'inline-block';
+          document.querySelector('.logout').style.display = 'none';
+          document.getElementById('user-info').style.display = 'none';
+        }
+      }
+    }
+    checkAuth();
+  </script>
+</body>
+
+</html>

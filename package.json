@@ -1,0 +1,23 @@
+{
+  "name": "prefactor-express-passport-openid-client-example",
+  "version": "1.0.0",
+  "description": "Simple Typescript, Express and Passport.js OIDC example",
+  "main": "dist/server.mjs",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.mjs",
+    "watch": "tsc -w"
+  },
+  "dependencies": {
+    "@types/express-session": "^1.18.1",
+    "@types/passport": "^1.0.17",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1",
+    "openid-client": "^6.5.0",
+    "passport": "^0.7.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.2",
+    "typescript": "^5.8.3"
+  }
+}
